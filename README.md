@@ -1,1 +1,1 @@
-[![Edagonis's github stats](https://github-readme-stats.vercel.app/api?username=edagonis)](https://github.com/anuraghazra/github-readme-stats)
+[![Edagonis's github](https://i.imgur.com/UJk0CGV.jpg)](https://i.imgur.com/UJk0CGV.jpg)

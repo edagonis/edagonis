@@ -1,18 +1,36 @@
 /** @jsx jsx */
-import { jsx, Text } from "theme-ui"
-
-import { Layout } from "../components/organisms/Layout/Layout"
+import { jsx, Text, Flex } from "theme-ui"
+import Logo from "../components/atoms/icons/Logo"
 
 export default function Home() {
   return (
-    <div className="container">
-      <main>
-        <Layout>
-          <Text as="h1" sx={{ fontSize: 22 }}>
-            Themed Next App
-          </Text>
-        </Layout>
+    <Flex
+      sx={{
+        flexDirection: "column",
+        flex: "1 auto",
+      }}
+      className="container"
+    >
+      <main
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          flex: "1 auto",
+        }}
+      >
+        <Flex
+          sx={{
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
+            margin: "auto",
+            height: "100%",
+          }}
+        >
+          <Logo />
+          <canvas id="audio_visual"></canvas>
+        </Flex>
       </main>
-    </div>
+    </Flex>
   )
 }

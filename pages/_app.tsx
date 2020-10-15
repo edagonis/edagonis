@@ -1,6 +1,8 @@
 import React from "react"
 import Head from "next/head"
 import { useThemeUI, ThemeProvider } from "theme-ui"
+import withGA from "next-ga"
+import { Router } from "next/router"
 
 import "nprogress/nprogress.css" //styles of nprogress
 import "normalize.css/normalize.css"
@@ -16,8 +18,11 @@ const GlobalStyleRenderer = () => {
       font-size: 62.5%;
     }
 
-    html, body {
-      min-height: 100%
+    html, body, #__next {
+      display: flex;
+      flex: 1 auto;
+      flex-direction: column;
+      min-height: 100%;
     }
 
     body {
@@ -34,6 +39,15 @@ const GlobalStyleRenderer = () => {
     input:-webkit-autofill {
       -webkit-text-fill-color: ${theme.colors.secondary2};
     }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
   `
 
   return <GlobalStyle />
@@ -45,7 +59,7 @@ function App(props) {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Head>
-        <title>Themed Next App</title>
+        <title>Edagonis</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GlobalStyleRenderer />
@@ -54,4 +68,4 @@ function App(props) {
     </ThemeProvider>
   )
 }
-export default App
+export default withGA("UA-166241319-1", Router)(App)

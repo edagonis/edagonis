@@ -5,6 +5,8 @@ import { Fragment } from "react"
 const ColorGradient = ({ type = "secondary" }) => {
   const { theme } = useThemeUI()
 
+  if (!theme || !theme.colors || !theme.colors.primary) return null
+
   const gradientsByType = {
     primary: [
       theme.colors.primary[4],

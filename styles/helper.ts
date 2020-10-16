@@ -34,15 +34,45 @@ const getThemeFromColors = (colors) => {
   return defaultTheme
 }
 
-export const generateRandomTheme = (type = "dark") => {
-  const darkColors = {
-    primary: generateMonochromaticPalette(),
-    secondary: generateMonochromaticPalette("secondary"),
+const generateExtraColorsFromPalette = (colors) => {
+  const primaryGradient = `linear-gradient(to left bottom, ${colors.primary.map(
+    (color) => color
+  )})`
+  const secondaryGradient = `linear-gradient(to left bottom, ${colors.secondary.map(
+    (color) => color
+  )})`
+
+  return {
+    primaryGradient,
+    secondaryGradient,
   }
+}
+
+export const generateRandomTheme = () => {
+  const primary = generateMonochromaticPalette()
+  const secondary = generateMonochromaticPalette("secondary")
+
+  const mainColors = {
+    primary,
+    secondary,
+  }
+
+  /** generate gradients */
+  const darkColors = {
+    ...mainColors,
+    ...generateExtraColorsFromPalette(mainColors),
+  }
+
   const darkTheme = getThemeFromColors(darkColors)
+
+  const mainLightColors = {
+    primary: secondary,
+    secondary: primary,
+  }
+
   const lightColors = {
-    primary: generateMonochromaticPalette("secondary"),
-    secondary: generateMonochromaticPalette(),
+    ...mainLightColors,
+    ...generateExtraColorsFromPalette(mainLightColors),
   }
 
   const lightTheme = getThemeFromColors(lightColors)
@@ -55,17 +85,20 @@ export const generateRandomTheme = (type = "dark") => {
 
 export const getDefaultTheme = () => {
   /** default theme */
-  const darkTheme = getThemeFromColors(defaultColorPalette)
-
-  let primary = [],
-    secondary = []
-  for (let i = 0; i < 4; i++) {
-    primary.push(defaultColorPalette["primary" + i])
-    secondary.push(defaultColorPalette["secondary" + i])
+  const darkColors = {
+    ...defaultColorPalette,
+    ...generateExtraColorsFromPalette(defaultColorPalette),
   }
+  const darkTheme = getThemeFromColors(darkColors)
+
+  const mainLightColors = {
+    primary: defaultColorPalette.secondary,
+    secondary: defaultColorPalette.primary,
+  }
+
   const lightColors = {
-    primary,
-    secondary,
+    ...mainLightColors,
+    ...generateExtraColorsFromPalette(mainLightColors),
   }
 
   const lightTheme = getThemeFromColors(lightColors)

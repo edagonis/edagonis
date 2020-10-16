@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useThemeUI, ThemeProvider, Text } from "theme-ui"
+import { jsx, useThemeUI, ThemeProvider, Text, Flex } from "theme-ui"
 
 import { useState } from "react"
 import styled from "styled-components"
@@ -17,42 +17,28 @@ const StyledExitIconWrapper = styled.span`
   cursor: pointer;
 `
 
-const StyledThemeIconWrapper = styled.span(({ theme }) => {
-  const {
-    colors: { secondary },
-  } = theme
+const SettingsRow = ({ children }) => (
+  <div
+    sx={{
+      display: "flex",
+      alignItems: "center",
 
-  return `
-    display: flex;
-    alignItems: center;
-    justifyContent: center;
-    width: 4rem;
-    height: 4rem;
-    background: ${secondary[0]};
-    borderRadius: 50%;
-    boxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    cursor: pointer;
-    zIndex: 3;
-  `
-})
+      a: {
+        margin: "0",
+      },
 
-const StyledSettingRow = styled.div`
-  display: flex;
-  alignitems: center;
+      span: {
+        marginRight: "1.2rem",
+      },
 
-  a {
-    margin: 0;
-  }
-
-  span {
-    marginright: 1.2rem;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 1.2rem;
-  }
-`
-
+      "&:not(:last-child)": {
+        marginBottom: "1.2rem",
+      },
+    }}
+  >
+    {children}
+  </div>
+)
 /**
  * Will wrap children components into a ThemeProvider
  */
@@ -63,10 +49,8 @@ const ThemeWrapper = ({ children }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(true)
 
   function handleRandomThemeGeneration() {
-    const theme = generateRandomTheme(isDarkTheme && "dark")
-    console.log(
-      "Generating random " + (isDarkTheme ? "dark" : "light") + " theme"
-    )
+    const theme = generateRandomTheme()
+
     setTheme(theme)
   }
 
@@ -83,7 +67,7 @@ const ThemeWrapper = ({ children }) => {
       {children}
 
       {!isSettingsPanelOpened && (
-        <div
+        <Flex
           sx={{
             display: "flex",
             alignItems: "center",
@@ -102,10 +86,10 @@ const ThemeWrapper = ({ children }) => {
           onClick={handleSettingsPanelToggle}
         >
           <ConfigIcon />
-        </div>
+        </Flex>
       )}
 
-      <div
+      <Flex
         sx={{
           visibility: isSettingsPanelOpened ? "visible" : "hidden",
           opacity: isSettingsPanelOpened ? 1 : 0,
@@ -121,10 +105,8 @@ const ThemeWrapper = ({ children }) => {
           borderTop: ".5px solid ${secondary[3]}",
           borderTopRightRadius: "8px",
           borderTopLeftRadius: "8px",
-          // background: "linear-gradient(to left bottom, ${primary.map"(
-          //   (shade) => shade
-          // )}),
-          // boxShadow: "0px 4px 4px ${secondary[4]}",
+          background: (theme) => theme.colors.primaryGradient,
+          boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
           transition: "all .4s linear",
 
           "@media (min-width: 60rem": {
@@ -138,7 +120,7 @@ const ThemeWrapper = ({ children }) => {
           <ExitIcon />
         </StyledExitIconWrapper>
 
-        <StyledSettingRow>
+        <SettingsRow>
           <span
             sx={{
               display: "flex",
@@ -160,14 +142,14 @@ const ThemeWrapper = ({ children }) => {
           <Text onClick={handleThemeTypeToggle}>
             {isDarkTheme ? "switch to light mode" : "switch to dark mode"}
           </Text>
-        </StyledSettingRow>
+        </SettingsRow>
 
-        <StyledSettingRow>
+        <SettingsRow>
           <Text onClick={handleRandomThemeGeneration}>
             generate random theme
           </Text>
-        </StyledSettingRow>
-      </div>
+        </SettingsRow>
+      </Flex>
     </ThemeProvider>
   )
 }

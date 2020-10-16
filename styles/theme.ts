@@ -4,6 +4,7 @@ interface CustomTheme extends Omit<Theme, "colors"> {
   colors: any
 }
 
+/** raw colors */
 export const defaultColorPalette = {
   primary: ["#120a10ff", "#22141eff", "#43263bff", "#643858ff", "#744266ff"],
   secondary: ["#d79f9dff", "#deb1afff", "#edd4d3ff", "#f4e6e5ff", "#fafafaff"],
@@ -13,7 +14,7 @@ export const theme: CustomTheme = {
   colors: defaultColorPalette,
   fonts: {
     body:
-      'Rubik, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+      '"Baloo 2", Roboto, "Segoe UI", -apple-system, BlinkMacSystemFont, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", cursive, sans-serif',
   },
   text: {
     heading: {
@@ -66,10 +67,7 @@ export const theme: CustomTheme = {
       lineHeight: 1.45,
       color: "secondary.0",
       minHeight: "100%",
-      background: (theme) =>
-        `linear-gradient(to left bottom, ${Object.keys(theme.colors)
-          .filter((key) => key.indexOf("primary") !== -1)
-          .map((key) => theme.colors[key])})`,
+      background: (theme) => theme.colors.primaryGradient,
     },
     h1: {
       variant: "text.heading",

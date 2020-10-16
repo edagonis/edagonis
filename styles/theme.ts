@@ -4,7 +4,7 @@ interface CustomTheme extends Omit<Theme, "colors"> {
   colors: object
 }
 
-const defaultColorPalette = {
+export const defaultColorPalette = {
   primary0: "#120a10ff",
   primary1: "#22141eff",
   primary2: "#43263bff",
@@ -17,7 +17,7 @@ const defaultColorPalette = {
   secondary4: "#fafafaff",
 }
 
-const theme: CustomTheme = {
+export const theme: CustomTheme = {
   colors: defaultColorPalette,
   fonts: {
     body:
@@ -72,7 +72,7 @@ const theme: CustomTheme = {
     root: {
       fontFamily: "body",
       lineHeight: 1.45,
-      color: "secondary2",
+      color: "secondary.2",
       minHeight: "100%",
       background: (theme) =>
         `linear-gradient(to left bottom, ${Object.keys(theme.colors)

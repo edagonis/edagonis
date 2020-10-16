@@ -8,7 +8,7 @@ import "nprogress/nprogress.css" //styles of nprogress
 import "normalize.css/normalize.css"
 import { createGlobalStyle } from "styled-components"
 
-import defaultTheme from "../styles/theme"
+import ThemeWrapper from "../styles/ThemeWrapper"
 
 const GlobalStyleRenderer = () => {
   const { theme } = useThemeUI()
@@ -57,7 +57,7 @@ function App(props) {
   const { Component, pageProps } = props
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeWrapper>
       <Head>
         <title>Edagonis</title>
         <link rel="icon" href="/favicon.ico" />
@@ -65,7 +65,7 @@ function App(props) {
       <GlobalStyleRenderer />
 
       <Component {...pageProps} />
-    </ThemeProvider>
+    </ThemeWrapper>
   )
 }
 export default withGA("UA-166241319-1", Router)(App)

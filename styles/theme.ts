@@ -1,20 +1,12 @@
 import { Theme } from "theme-ui"
 
 interface CustomTheme extends Omit<Theme, "colors"> {
-  colors: object
+  colors: any
 }
 
 export const defaultColorPalette = {
-  primary0: "#120a10ff",
-  primary1: "#22141eff",
-  primary2: "#43263bff",
-  primary3: "#643858ff",
-  primary4: "#744266ff",
-  secondary0: "#d79f9dff",
-  secondary1: "#deb1afff",
-  secondary2: "#edd4d3ff",
-  secondary3: "#f4e6e5ff",
-  secondary4: "#fafafaff",
+  primary: ["#120a10ff", "#22141eff", "#43263bff", "#643858ff", "#744266ff"],
+  secondary: ["#d79f9dff", "#deb1afff", "#edd4d3ff", "#f4e6e5ff", "#fafafaff"],
 }
 
 export const theme: CustomTheme = {
@@ -25,7 +17,7 @@ export const theme: CustomTheme = {
   },
   text: {
     heading: {
-      color: "secondary2",
+      color: "secondary.2",
       marginBottom: 18,
       textAlign: "center",
     },
@@ -41,30 +33,30 @@ export const theme: CustomTheme = {
   },
   buttons: {
     primary: {
-      color: "primary1",
-      bg: "secondary3",
+      color: "primary.1",
+      bg: "secondary.3",
       "&:hover": {
-        bg: "secondary2",
+        bg: "secondary.2",
       },
       cursor: "pointer",
     },
     secondary: {
-      color: "primary1",
-      bg: "secondary2",
+      color: "primary.1",
+      bg: "secondary.2",
     },
   },
   forms: {
     input: {
-      backgroundColor: "primary1",
+      backgroundColor: "primary.1",
       "&:focus": {
         outline: "none",
       },
 
       /** override browser agent */
       "&:-webkit-autofill": {
-        boxShadow: (theme) => `0 0 0 50px ${theme.colors.primary1} inset`,
-        border: (theme) => `1px solid ${theme.colors.secondary3} !important`,
-        color: (theme) => `${theme.colors.secondary3} !important`,
+        boxShadow: (theme) => `0 0 0 50px ${theme.colors.primary[1]} inset`,
+        border: (theme) => `1px solid ${theme.colors.secondary[3]} !important`,
+        color: (theme) => `${theme.colors.secondary[3]} !important`,
       },
     },
   },
@@ -72,7 +64,7 @@ export const theme: CustomTheme = {
     root: {
       fontFamily: "body",
       lineHeight: 1.45,
-      color: "secondary.2",
+      color: "secondary.0",
       minHeight: "100%",
       background: (theme) =>
         `linear-gradient(to left bottom, ${Object.keys(theme.colors)
@@ -95,13 +87,13 @@ export const theme: CustomTheme = {
       maxWidth: "100%",
     },
     a: {
-      color: "secondary3",
+      color: "secondary.3",
       cursor: "pointer",
       "&:hover": {
-        color: "secondary4",
+        color: "secondary.4",
       },
       "&:any-link": {
-        color: "secondary3",
+        color: "secondary.3",
         textDecoration: "none",
       },
     },

@@ -14,7 +14,7 @@ export function SunLogo() {
     >
       <path
         sx={{
-          stroke: "primary2",
+          stroke: "primary.2",
         }}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -36,7 +36,7 @@ export function MoonLogo() {
     >
       <path
         sx={{
-          stroke: "primary2",
+          stroke: "primary.2",
         }}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -58,7 +58,7 @@ export function ConfigIcon() {
     >
       <path
         sx={{
-          stroke: "primary2",
+          stroke: "primary.2",
         }}
         strokeLinecap="round"
         strokeLinejoin="round"

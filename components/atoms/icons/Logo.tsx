@@ -7,16 +7,16 @@ const ColorGradient = ({ type = "secondary" }) => {
 
   const gradientsByType = {
     primary: [
-      theme.colors.primary4,
-      theme.colors.primary3,
-      theme.colors.primary2,
-      theme.colors.primary1,
+      theme.colors.primary[4],
+      theme.colors.primary[3],
+      theme.colors.primary[2],
+      theme.colors.primary[1],
     ],
     secondary: [
-      theme.colors.secondary0,
-      theme.colors.secondary1,
-      theme.colors.secondary2,
-      theme.colors.secondary3,
+      theme.colors.secondary[0],
+      theme.colors.secondary[1],
+      theme.colors.secondary[2],
+      theme.colors.secondary[3],
     ],
   }
 
@@ -57,7 +57,7 @@ function Logo() {
           id="Golden Circle"
           fill="url(#paint0_linear)"
           sx={{
-            stroke: "primary2",
+            stroke: "primary.2",
           }}
           strokeWidth="3"
           d="M255.423 112c0 50.492-40.931 91.423-91.423 91.423-50.491 0-91.423-40.931-91.423-91.423 0-50.491 40.932-91.423 91.423-91.423 50.492 0 91.423 40.932 91.423 91.423z"

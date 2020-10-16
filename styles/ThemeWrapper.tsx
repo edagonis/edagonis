@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, useThemeUI, ThemeProvider, Text, Flex } from "theme-ui"
+import { jsx, ThemeProvider, Link as ThemeLink, Flex } from "theme-ui"
 
 import { useState } from "react"
 import styled from "styled-components"
@@ -77,7 +77,7 @@ const ThemeWrapper = ({ children }) => {
             bottom: "3rem",
             width: "4rem",
             height: "4rem",
-            background: "${secondary[0]}",
+            backgroundColor: "secondary.0",
             borderRadius: "50%",
             boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
             cursor: "pointer",
@@ -102,14 +102,15 @@ const ThemeWrapper = ({ children }) => {
           right: "0",
           bottom: "0",
           zIndex: "9",
-          borderTop: ".5px solid ${secondary[3]}",
+          borderTop: ".5px solid",
+          borderRight: ".5px solid",
           borderTopRightRadius: "8px",
-          borderTopLeftRadius: "8px",
+          borderColor: "secondary.3",
           background: (theme) => theme.colors.primaryGradient,
           boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
           transition: "all .4s linear",
 
-          "@media (min-width: 60rem": {
+          "@media (min-width: 60rem)": {
             padding: "2.5rem 2.5rem 4rem 2.5rem",
             borderTopLeftRadius: "0",
             borderRight: "1px solid ${secondary[3]}",
@@ -128,7 +129,7 @@ const ThemeWrapper = ({ children }) => {
               justifyContent: "center",
               width: "4rem",
               height: "4rem",
-              background: "${secondary[0]}",
+              backgroundColor: "secondary.0",
               borderRadius: "50%",
               boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
               cursor: "pointer",
@@ -139,15 +140,15 @@ const ThemeWrapper = ({ children }) => {
             {isDarkTheme ? <SunLogo /> : <MoonLogo />}
           </span>
 
-          <Text onClick={handleThemeTypeToggle}>
+          <ThemeLink onClick={handleThemeTypeToggle}>
             {isDarkTheme ? "switch to light mode" : "switch to dark mode"}
-          </Text>
+          </ThemeLink>
         </SettingsRow>
 
         <SettingsRow>
-          <Text onClick={handleRandomThemeGeneration}>
+          <ThemeLink onClick={handleRandomThemeGeneration}>
             generate random theme
-          </Text>
+          </ThemeLink>
         </SettingsRow>
       </Flex>
     </ThemeProvider>

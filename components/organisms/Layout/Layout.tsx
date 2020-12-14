@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { jsx, useThemeUI, Text, Link as ThemeLink } from "theme-ui"
+import { jsx, useThemeUI, Container } from "theme-ui"
 
 import * as React from "react"
 import NProgress from "nprogress"
+import Router from "next/router"
 
 export interface IAppProps {
   children: React.ReactNode
@@ -68,8 +69,8 @@ export function Layout(props: IAppProps) {
     NProgress.configure({
       template: `
       <div class="bar"
-      style="background: ${theme.colors.secondary.3}" role="bar">
-        <div class="peg" style="box-shadow: 0 0 10px ${theme.colors.secondary.3}, 0 0 5px ${theme.colors.secondary.3}">
+      style="background: ${theme.colors.secondary[3]}" role="bar">
+        <div class="peg" style="box-shadow: 0 0 10px ${theme.colors.secondary[3]}, 0 0 5px ${theme.colors.secondary[3]}">
         </div>
       </div>
       <div class="spinner" role="spinner">

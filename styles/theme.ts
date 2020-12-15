@@ -17,10 +17,15 @@ export const theme: CustomTheme = {
       '"Baloo 2", Roboto, "Segoe UI", -apple-system, BlinkMacSystemFont, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", cursive, sans-serif',
   },
   text: {
-    heading: {
-      color: "secondary.2",
-      marginBottom: 18,
-      textAlign: "center",
+    heading1: {
+      color: "secondary.4",
+      fontSize: "2.2rem",
+      marginBottom: "1.6rem",
+    },
+    heading2: {
+      color: "secondary.0",
+      fontSize: "2.0rem",
+      marginBottom: "1.6rem",
     },
     error: {
       color: "#b71c1c",
